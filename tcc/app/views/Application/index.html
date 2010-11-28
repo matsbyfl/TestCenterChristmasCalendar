@@ -1,0 +1,68 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div id=surrounding>
+	<div id="top">
+	<img src="@{'/public/images/TSlogo.png'}" />
+	</div>
+	
+	#{form @Application.draw()}
+	
+	<div id="buyerTag">
+		<label for="buyer">Dagens pakke er kjøpt av: </label>
+		<select name="buyer" id="buyer">
+		<option id="-1" >Velg...</option>
+	    	#{list items:buyers, as:'participant'}
+	    		#{if currentBuyerID == participant.getPartId()}
+	    			<option value="${participant.getPartId()}" selected="selected">${participant.getFirstName()}</option>
+	    		#{/if}
+	    		#{else}
+	    			<option value="${participant.getPartId()}">${participant.getFirstName()}</option>
+	    		#{/else}
+	    	#{/list}
+	    </select>
+	    #{ifErrors}
+            <span class="error">Hvem har kjøpt dagens pakke?</span>
+    #{/ifErrors}
+	</div>  
+	<div id="buttonTag">    	
+	    <input id="button" type="submit" value="Trekk dagens vinner" accesskey="T"/>
+	</div>
+	#{/form}
+	
+	 #{if flash.error }
+    	<div class="error">
+    		${flash.error} 
+    	</div>
+    #{/if}
+	
+	#{if winner != null}
+		<div id="winner">
+		Dagens heldige vinner er: <strong>${winner.getFirstName()}</strong>
+		</div>
+	#{/if}
+	
+	
+	<div id="calendarDiv">
+		<table cellpadding="0">
+			<tr>
+				#{list items:winners, as:'win'}
+					#{if win_index < today && win == ""}
+						<td class="inactive">${win_index}&nbsp;${win}<td>
+					#{/if}
+					#{else}
+						<td class="calendar">${win_index}&nbsp;${win}<td>
+					#{/else}
+					
+					#{if win_index % 6 == 0 }</tr><tr>#{/if}
+				#{/list}
+			</tr>
+		</table>
+	</div>	
+</div>
+<div id="buttom">
+Powered by: <img src="@{'/public/images/1178392087.png'}" height="32" width="90"/>
+</div>
+
+
+

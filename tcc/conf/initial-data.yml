@@ -1,0 +1,116 @@
+# Test data
+
+Participant(arya):
+ partId:  1
+ firstName: Arya
+ lastName: Gunei
+ eligebleForDraw: true
+ 
+Participant(jorgen):
+ partId:  2
+ firstName: Jørgen
+ lastName: Norås
+ eligebleForDraw: true
+ 
+Participant(eivind):
+ partId:  3
+ firstName: Eivind
+ lastName: Staff
+ eligebleForDraw: true
+ 
+Participant(mats):
+ partId:  4
+ firstName: Mats
+ lastName: Byfuglien
+ eligebleForDraw: true
+ 
+Participant(sindre):
+ partId:  5
+ firstName: Sindre
+ lastName: Rødseth Hansen
+ eligebleForDraw: true
+ 
+Participant(maria):
+ partId:  6
+ firstName:  Maria
+ lastName: Biglary
+ eligebleForDraw: true
+
+Participant(marcel):
+ partId:  7
+ firstName:   Marcel
+ lastName: Grohman
+ eligebleForDraw: true
+ 
+Participant(monica):
+ partId:  8
+ firstName:   Monica
+ lastName: Le Do
+ eligebleForDraw: true
+ 
+Participant(martin):
+ partId:  9
+ firstName:   Martin
+ lastName: Sande
+ eligebleForDraw: true
+ 
+Participant(olga):
+ partId:  10
+ firstName:   Olga
+ lastName: Adamova
+ eligebleForDraw: true
+ 
+Participant(emil):
+ partId:  11
+ firstName:   Emil
+ lastName: Øveraasen
+ eligebleForDraw: true
+ 
+Participant(eystein):
+ partId:  12
+ firstName: Eystein
+ lastName: Leren
+ eligebleForDraw: true
+ 
+Participant(frode):
+ partId:  13
+ firstName: Frode 
+ lastName: Nordseth
+ eligebleForDraw: true
+ 
+Participant(hansmarius):
+ partId:  14
+ firstName:   Hans Marius
+ lastName: Fløtten
+ eligebleForDraw: true
+ 
+Participant(pedro):
+ partId:  15
+ firstName:   Pedro
+ lastName: Gochigocci
+ eligebleForDraw: true 
+
+
+User(bob):
+    email:          bob@gmail.com
+    password:       secret
+    fullname:       Bob
+    isAdmin:        true
+    
+User(jeff):
+    email:          jeff@gmail.com
+    password:       secret
+    fullname:       Jeff
+    
+User(mats):
+    email:          mats@byfuglien.net
+    password:       test
+    fullname:       mats
+    
+#Win(w1): 
+# winner: mats
+# winningDate: 2010-12-1
+
+#Win(w2):
+# winner: pedro
+# winningDate: 2010-12-4 

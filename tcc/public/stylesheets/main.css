@@ -1,0 +1,227 @@
+html, body {
+    background: #444444 !important;
+    font-family: Helvetica, Arial, Sans !important;
+}
+
+#surrounding {
+	border-color: #666666;
+	border-style: solid;
+	border-width: 1px;  
+	background: #60728a;
+	width: 900px;
+	height:900px;
+	padding: 0px;
+}
+
+
+body {
+    width: 900px;	
+    
+    /**margin: auto;**/
+}
+
+#top {
+	background: #364B66;
+	
+    padding: 10px 0;
+    /**position: relative;**/
+    height: 140px;
+    width: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#buyerTag {
+    height: 50px;
+    color: white;
+    width: inherit;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#buttonTag {
+    width: 300px;
+    margin: 0px auto 0px auto;
+    text-align: center;	
+}
+
+#buyer {
+	background: #BBBBBB;
+	border: thick;
+	border-color: black;
+	border-width: 2px;
+	font-size: 12pt;
+}
+
+#calendarDiv {
+	padding-top: 50px;
+	padding-left: 20px;
+	height: 600px;
+}
+
+#winner {
+	width: 500px;
+	height: 20px;
+    margin: 20px auto 0px auto;
+    text-align: center;
+    background: #B8C569;
+    padding: 20px 30px 30px 20px;
+    /**margin: 20px 0;**/
+    color: #3C4313;
+    font-size:20pt;
+    position: relative;
+    -webkit-border-radius: 16px;
+    -webkit-box-shadow: 0 2px 0 #93A045;
+    -moz-border-radius: 16px;
+}
+
+
+table {
+	border-style:solid;
+	border-color: black;
+	border-collapse:collapse;	
+	border-width: 2px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;	
+}
+
+.calendar {
+	height: 100px;
+	width: 100px;
+	padding: 5px;
+	text-align: left;
+	background:#abcdef;
+	border-style:solid;
+	border-color: black;
+	border-collapse:collapse;	
+	border-spacing: 0px;
+	border-width: 1px;
+	/**border-bottom:1px solid #e5eff8;
+	border-left:1px solid #e5eff8;**/
+}
+
+.inactive {
+	height: 100px;
+	width: 100px;
+	padding: 5px;
+	text-align: left;
+	background:#999999;
+	border-style:solid;
+	border-color: black;
+	border-collapse:collapse;	
+	border-spacing: 0px;
+	border-width: 1px;
+	/**border-bottom:1px solid #e5eff8;
+	border-left:1px solid #e5eff8;**/
+}
+	
+
+hr {
+	border-style: solid;
+	border-color: #abcdef;
+	border-width: 1px;
+}
+
+#button {
+	background: #C88122;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    padding: 5px 10px;
+    font-size: 15pt;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+	border:2px solid #888888;
+	text-align:center;
+	text-decoration:none;
+}
+
+
+#button:hover { 	
+	background: #C88122;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    padding: 5px 10px;
+    font-size: 15pt;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+	border:2px solid #888888;
+	border-color: black;
+	text-align:center;
+	text-decoration:none; 	
+}
+
+#buttom {
+	width:inherit;	
+	color: white;
+	font-size: 8pt;
+	text-align: right;
+	
+}
+
+#buttom img {
+	vertical-align: top;
+}
+
+.error {
+	font-weight: bold;
+	color: #a80404;
+}
+
+/** Login **/
+
+#login form {
+    background: #8B98AD !important;
+    border: 0 !important;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+}
+
+#login label, #password-field label, #username-field label {
+    color: #161D28 !important;
+    font-size: 110% !important;
+}
+
+
+#remember-field {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
