@@ -107,10 +107,10 @@ User(mats):
     password:       test
     fullname:       mats
     
-#Win(w1): 
-# winner: mats
-# winningDate: 2010-12-1
+Win(w1): 
+    winner: mats
+    winningDate: 2010-12-1
 
-#Win(w2):
-# winner: pedro
-# winningDate: 2010-12-4 
+Win(w2):
+    winner: pedro
+    winningDate: 2010-12-4 

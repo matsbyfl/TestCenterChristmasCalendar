@@ -49,16 +49,65 @@ public class Application extends Controller {
 		 renderArgs.put("winners", winners);
 	}
 	
+	@Before 
+	static void getEligebleParticipants() {
+		List<Participant> participants = Participant.find("eligebleForDraw = true and boughtTodaysPresent = false order by firstName").fetch();
+		renderArgs.put("eligebleWinners", participants);
+	}
+	
     public static void index() {
     	render();
     }
    
-    public static void draw(@Required @Min(1) Long buyer) {
-    	if( validation.hasErrors()) {
-    		render("Application/index.html");
+    /*
+     * Set current buyer. If Id negative, no participant chosen. 
+     * Therefore there will noe be set a current buyer. 
+     * */
+    public static void setCurrentBuyer(@Required @Min(1) Long buyer) {
+    	flash.clear();
+    	Participant.resetBuyer();
+    	
+    	if(!validation.hasErrors()) {
+    		Participant.setBuyer(buyer, true);
     	}
     	
-		Participant.setBuyer(buyer, true);
+    	renderArgs.put("currentBuyerID", buyer); 
+    	getEligebleParticipants();
+    	render("Application/index.html");
+    	
+    }
+    
+    public static void draw(@Required List<Long> eligebleWinners) {
+    	
+    	// Make sure a buyer is set for today present
+		if( Participant.find("boughtTodaysPresent = true").fetch().size() != 1 ) {
+			flash.error("Hvem har kjøpt dagens pakke?");
+    		render("Application/index.html");
+		}
+    	
+    	if(validation.hasErrors()) {
+            render("Application/index.html");
+        }
+    	
+    	SecureRandom randomGenerator;
+		try {
+			randomGenerator = SecureRandom.getInstance("SHA1PRNG");
+	    	randomGenerator.setSeed(System.currentTimeMillis());
+	    	int winningNumber = randomGenerator.nextInt(eligebleWinners.size());
+	    	Long participantId = eligebleWinners.get(winningNumber);
+	    	Participant winner = Participant.findById(participantId);
+	    	winner.addWin();
+	    	getPreviousWinners();
+	    	Participant.resetBuyer();
+	    	render( "Application/index.html", winner );
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    /*public static void draw( List eligebleWinners) {
+    	
+		//Participant.setBuyer(buyer, true);
 		JPAQuery jq = Participant.find( "Select p from Participant p where p.eligebleForDraw = true and p.boughtTodaysPresent = false" );
 		List<Participant> participants = jq.fetch();
     	SecureRandom randomGenerator;
@@ -69,32 +118,18 @@ public class Application extends Controller {
 		    	int winningNumber = randomGenerator.nextInt(participants.size());
 		    	Participant winner = participants.get(winningNumber);
 		    	winner.addWin();
-		    	Participant.setBuyer(buyer, false);
-		    	renderArgs.put("currentBuyerID", buyer);
+		    	//Participant.setBuyer(buyer, false);
+		    	//renderArgs.put("currentBuyerID", buyer);
 		    	render( "Application/index.html", winner );
 	    	}
 	    	else {
 	    		flash.error("Alle deltakere har vunnet");
-	    		Participant.setBuyer(buyer, false);
+	    		//Participant.setBuyer(buyer, false);
 	    		render("Application/index.html");
 	    	}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    } */
 
 }

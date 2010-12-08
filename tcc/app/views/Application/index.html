@@ -6,41 +6,57 @@
 	<img src="@{'/public/images/TSlogo.png'}" />
 	</div>
 	
-	#{form @Application.draw()}
-	
-	<div id="buyerTag">
+	#{if winner == null}
+		<div id="buyerTag">
+		#{form @Application.setCurrentBuyer()}
 		<label for="buyer">Dagens pakke er kjøpt av: </label>
-		<select name="buyer" id="buyer">
-		<option id="-1" >Velg...</option>
-	    	#{list items:buyers, as:'participant'}
-	    		#{if currentBuyerID == participant.getPartId()}
-	    			<option value="${participant.getPartId()}" selected="selected">${participant.getFirstName()}</option>
-	    		#{/if}
-	    		#{else}
-	    			<option value="${participant.getPartId()}">${participant.getFirstName()}</option>
-	    		#{/else}
-	    	#{/list}
-	    </select>
-	    #{ifErrors}
-            <span class="error">Hvem har kjøpt dagens pakke?</span>
-    #{/ifErrors}
-	</div>  
-	<div id="buttonTag">    	
-	    <input id="button" type="submit" value="Trekk dagens vinner" accesskey="T"/>
-	</div>
-	#{/form}
-	
-	 #{if flash.error }
-    	<div class="error">
-    		${flash.error} 
-    	</div>
-    #{/if}
-	
-	#{if winner != null}
+		<select name="buyer" id="buyer" onchange="form.submit();">
+				<option id="-1" >Velg...</option>
+		    	#{list items:buyers, as:'participant'}
+		    		#{if currentBuyerID == participant.getPartId()}
+		    			<option value="${participant.getPartId()}" selected="selected">${participant.getFirstName()}</option>
+		    		#{/if}
+		    		#{else}
+		    			<option value="${participant.getPartId()}">${participant.getFirstName()}</option>
+		    		#{/else}
+		    		<div id="buyerTag">
+		    	#{/list}
+		</select>
+		#{/form}
+		
+		</div>
+		#{if flash.error }
+    			<div class="error">
+    				${flash.error} 
+    			</div>
+    		#{/if}
+		#{form @Application.draw()}
+			<div id="partTag">
+				#{list items:eligebleWinners, as:'ew'}
+					<input type="checkbox" value="${ew.id}" name="eligebleWinners">
+						${ew.getFirstName()}
+					</input>
+					<br />
+				#{/list}
+			</div>
+			<div id="buttonTag">    	
+				#{ifErrors}
+	    		<span class="error">Velg minst en deltaker</span>
+	    		#{/ifErrors}
+				<input id="button" type="submit" value="Trekk dagens vinner" accesskey="J"/>
+			</div>
+		#{/form}
+	#{/if}
+	#{else}
+		#{form @Application.index()}
+		<div id="buttonTag">    	
+	    	<input id="button" type="submit" value="Ny trekning" accesskey="J"/>
+		</div>	
+		#{/form}
 		<div id="winner">
 		Dagens heldige vinner er: <strong>${winner.getFirstName()}</strong>
 		</div>
-	#{/if}
+	#{/else}
 	
 	
 	<div id="calendarDiv">

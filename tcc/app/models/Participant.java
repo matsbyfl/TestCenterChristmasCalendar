@@ -55,6 +55,11 @@ public class Participant extends Model {
     	buyer.save();
     }
 	
+	public static void resetBuyer() {
+		EntityManager em = Participant.em();
+    	em.createQuery("update Participant p set p.boughtTodaysPresent = false").executeUpdate();
+	}
+	
 	public String toString() {
 		return firstName;
 	}

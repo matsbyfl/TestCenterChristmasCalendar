@@ -8,7 +8,8 @@
 
 # Home page
 GET     /                                       Application.index
-POST     /winner                                Application.draw												
+POST    /                                		Application.draw
+POST	/buyer									Application.setCurrentBuyer			
 
 # Import CRUD routes
 *      /admin           					    module:crud
