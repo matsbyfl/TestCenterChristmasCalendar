@@ -1,6 +1,10 @@
 package controllers;
 
 public class AlternativeTodo {
+	public static void main(){
+	StringBuffer sb = new StringBuffer("asdf");
+	sb.toString().toLowerCase();
+	}
 	/*Post.find(
     "select p from Post p, Comment c where c.post = p and c.subject like ?", "%hop%"
 );
